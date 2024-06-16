@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FaSearch } from "react-icons/fa";
 
 class WeatherForm extends Component {
   constructor() {
@@ -48,7 +49,7 @@ class WeatherForm extends Component {
           required
         />
         <button type="submit">
-          <h1 className="search">Search</h1>
+          <FaSearch />
         </button>
       </form>
     );
