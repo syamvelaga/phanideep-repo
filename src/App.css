@@ -89,13 +89,13 @@ html {
   color: red;
   margin-top: 10px;
 }
-.button {
+/* .button {
   color: black;
 }
 .search {
   font-size: 20px;
-  color: red;
-}
+  color: red; */
+/* } */
 /* Dark Mode Styles */
 .app.dark-mode {
   background-color: black;
@@ -115,4 +115,42 @@ html {
 .app.dark-mode .navbar {
   background-color: #0e0101;
   border-color: black;
+}
+.weather-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.weather-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  max-width: 300px; /* Adjust the max-width as needed */
+  width: 100%;
+}
+
+.weather-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.weather-form button:hover {
+  background-color: #0056b3;
+}
+
+.weather-form button svg {
+  margin-right: 5px; /* Adjust if necessary */
 }
