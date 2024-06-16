@@ -8,40 +8,48 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      darkMode: false,
       weatherData: [],
       errorMessage: "",
+      isDarkMode: false,
     };
   }
 
-  toggleDarkMode = () => {
-    this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
-  };
-
   addWeatherData = (data) => {
-    this.setState({ weatherData: [data], errorMessage: "" });
+    this.setState((prevState) => ({
+      weatherData: [...prevState.weatherData, data],
+      errorMessage: "",
+    }));
   };
 
   setErrorMessage = (message) => {
-    this.setState({ errorMessage: message, weatherData: [] });
+    this.setState({ errorMessage: message });
+  };
+
+  toggleMode = () => {
+    this.setState((prevState) => {
+      document.body.classList.toggle("dark-mode", !prevState.isDarkMode);
+      return { isDarkMode: !prevState.isDarkMode };
+    });
   };
 
   render() {
-    const { darkMode, weatherData, errorMessage } = this.state;
+    const { weatherData, errorMessage, isDarkMode } = this.state;
+    // const currentDateTime = new Date().toLocaleString();
 
     return (
-      <div className={darkMode ? "app dark-mode" : "app"}>
-        <header className="app-header">
+      <div className={`app ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+        <nav className="navbar">
           <h1>Weather App</h1>
           <DarkModeToggle
-            toggleDarkMode={this.toggleDarkMode}
-            darkMode={darkMode}
+            toggleMode={this.toggleMode}
+            isDarkMode={isDarkMode}
           />
-        </header>
+        </nav>
         <WeatherForm
           addWeatherData={this.addWeatherData}
           setErrorMessage={this.setErrorMessage}
         />
+        {/* <div className="date-time">{currentDateTime}</div> */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <WeatherList weatherData={weatherData} />
       </div>
