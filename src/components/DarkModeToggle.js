@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class DarkModeToggle extends Component {
-  render() {
-    const { toggleDarkMode, darkMode } = this.props;
-
-    return (
-      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-      </button>
-    );
-  }
-}
+const DarkModeToggle = ({ toggleMode, isDarkMode }) => {
+  return (
+    <div className="toggle-mode" onClick={toggleMode}>
+      {isDarkMode ? "\u{2600} Dark Mode" : "\u{1F319} Light Mode"}
+    </div>
+  );
+};
 
 export default DarkModeToggle;
